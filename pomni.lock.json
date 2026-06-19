@@ -1,0 +1,7 @@
+{
+  "nixpkgs": {
+    "url": "",
+    "revision": "3e41b24abd260e8f71dbe2f5737d24122f972158",
+    "hash": ""
+  }
+}

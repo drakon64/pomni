@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Pomni.Model;
 
-internal class PomniJson
+internal class PomniPin
 {
     public required Forge Forge { get; init; }
     public required string Repository { get; init; }

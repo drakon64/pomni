@@ -14,14 +14,14 @@ internal static class Add
         bool? frozen
     )
     {
-        var pomniJson = JsonSerializer.Deserialize<Dictionary<string, PomniJson>>(
+        var pomniJson = JsonSerializer.Deserialize<Dictionary<string, PomniPin>>(
             File.ReadAllText("pomni.json"),
-            SourceGenerationContext.Default.DictionaryStringPomniJson
+            SourceGenerationContext.Default.DictionaryStringPomniPin
         );
 
         pomniJson.Add(
             name,
-            new PomniJson
+            new PomniPin
             {
                 Forge = forge,
                 Repository = repository,
@@ -36,7 +36,7 @@ internal static class Add
         pomniJsonFile.Write(
             JsonSerializer.SerializeToUtf8Bytes(
                 pomniJson,
-                SourceGenerationContext.Default.DictionaryStringPomniJson
+                SourceGenerationContext.Default.DictionaryStringPomniPin
             )
         );
     }

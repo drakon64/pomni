@@ -2,22 +2,18 @@ using System.Text.Json.Serialization;
 
 namespace Pomni.Client.GitHub;
 
-internal partial class GitHubClient : IDisposable
+internal static partial class GitHubClient
 {
-    private readonly HttpClient _httpClient = new HttpClient
+    private static readonly HttpClient HttpClient = new()
     {
-        BaseAddress = new Uri("https://github.com/"),
+        BaseAddress = new Uri("https://api.github.com/"),
         DefaultRequestHeaders =
         {
             { "Accept", "application/vnd.github+json" },
+            { "User-Agent", "Pomni 0.0.1" },
             { "X-GitHub-Api-Version", "2026-03-10" },
         },
     };
-
-    public void Dispose()
-    {
-        _httpClient.Dispose();
-    }
 }
 
 [JsonSerializable(typeof(Repository))]

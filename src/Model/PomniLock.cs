@@ -1,6 +1,6 @@
 namespace Pomni.Model;
 
-internal class PomniLockJson
+internal class PomniLock
 {
     public required string Url { get; init; }
     public required string Revision { get; init; }

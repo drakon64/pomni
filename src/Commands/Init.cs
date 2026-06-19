@@ -7,12 +7,20 @@ internal static class Init
 {
     public static void InitPomniJson()
     {
-        using var pomniJsonFile = File.Open("pomni.json", FileMode.Create);
+        using var pomniJson = File.Open("pomni.json", FileMode.CreateNew);
+        using var pomniLockJson = File.Open("pomni.lock.json", FileMode.CreateNew);
 
-        pomniJsonFile.Write(
-            JsonSerializer.SerializeToUtf8Bytes<Dictionary<string, PomniJson>>(
-                new Dictionary<string, PomniJson>(),
-                SourceGenerationContext.Default.DictionaryStringPomniJson
+        pomniJson.Write(
+            JsonSerializer.SerializeToUtf8Bytes<Dictionary<string, PomniPin>>(
+                new Dictionary<string, PomniPin>(),
+                SourceGenerationContext.Default.DictionaryStringPomniPin
+            )
+        );
+
+        pomniLockJson.Write(
+            JsonSerializer.SerializeToUtf8Bytes<Dictionary<string, PomniLock>>(
+                new Dictionary<string, PomniLock>(),
+                SourceGenerationContext.Default.DictionaryStringPomniLock
             )
         );
     }

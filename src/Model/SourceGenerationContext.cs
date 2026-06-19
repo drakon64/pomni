@@ -2,8 +2,8 @@ using System.Text.Json.Serialization;
 
 namespace Pomni.Model;
 
-[JsonSerializable(typeof(Dictionary<string, PomniJson>))]
-[JsonSerializable(typeof(Dictionary<string, PomniLockJson>))]
+[JsonSerializable(typeof(Dictionary<string, PomniPin>))]
+[JsonSerializable(typeof(Dictionary<string, PomniLock>))]
 [JsonSourceGenerationOptions(
     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
     PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,

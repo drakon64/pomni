@@ -14,10 +14,13 @@ internal class Commit
 
 internal partial class GitHubClient
 {
-    public async Task<Branch> GetBranch(string repo, string branch)
+    public static async Task<Branch> GetBranch(string repo, string branch)
     {
-        var request = await _httpClient.SendAsync(
-            new HttpRequestMessage { RequestUri = new Uri($"repos/{repo}/branches/{branch}") }
+        var request = await HttpClient.SendAsync(
+            new HttpRequestMessage
+            {
+                RequestUri = new Uri($"repos/{repo}/branches/{branch}", UriKind.Relative),
+            }
         );
 
         var response = await request.Content.ReadFromJsonAsync<Branch>(

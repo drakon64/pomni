@@ -44,6 +44,7 @@ class Program
         rootCommand.Add(addCommand);
 
         var updateCommand = new Command("update");
+        updateCommand.SetAction(_ => Update.UpdateRepositories());
         rootCommand.Add(updateCommand);
 
         var botCommand = new Command("bot");

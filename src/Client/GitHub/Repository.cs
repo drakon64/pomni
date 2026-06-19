@@ -9,10 +9,10 @@ internal class Repository
 
 internal partial class GitHubClient
 {
-    public async Task<Repository> GetRepository(string repo)
+    public static async Task<Repository> GetRepository(string repo)
     {
-        var request = await _httpClient.SendAsync(
-            new HttpRequestMessage { RequestUri = new Uri($"repos/{repo}") }
+        var request = await HttpClient.SendAsync(
+            new HttpRequestMessage { RequestUri = new Uri($"repos/{repo}", UriKind.Relative) }
         );
 
         var response = await request.Content.ReadFromJsonAsync<Repository>(
