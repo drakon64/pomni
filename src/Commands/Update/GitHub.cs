@@ -12,10 +12,9 @@ internal partial class Update
         if (pomniPin.ReferenceType is ReferenceType.Branch or null)
         {
             var repo = pomniPin.Repository;
-
             string branch;
 
-            if (pomniPin is { ReferenceType: ReferenceType.Branch, Reference: not null })
+            if (pomniPin.Reference is not null)
             {
                 branch = pomniPin.Reference;
             }
