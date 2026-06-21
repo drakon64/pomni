@@ -20,7 +20,7 @@ class Program
         var repositoryArgument = new Argument<string>("repository");
 
         var branchOption = new Option<string>("-b", "--branch");
-        var referenceTypeOption = new Option<ReferenceType>("-t", "--reference-type");
+        var referenceTypeOption = new Option<ReferenceType?>("-t", "--reference-type");
         var frozenOption = new Option<bool?>("-f", "--frozen");
 
         var addCommand = new Command("add");
