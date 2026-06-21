@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.Json;
 using Pomni.Client.GitHub;
 using Pomni.Model;
@@ -78,10 +79,35 @@ internal static class Update
         else
             sha = "";
 
-        return new PomniLock
+        var url = $"https://github.com/{pomniPin.Repository}/archive/{sha}.tar.gz";
+
+        return new PomniLock { Url = url, Hash = await GetSha256(url) };
+    }
+
+    private static async Task<string> GetSha256(string url)
+    {
+        var prefetchProcessStartInfo = new ProcessStartInfo
         {
-            Url = $"https://github.com/{pomniPin.Repository}/archive/{sha}.tar.gz",
-            Hash = "",
+            FileName = "nix-prefetch-url",
+            ArgumentList = { url, "--unpack" },
+            RedirectStandardOutput = true,
         };
+
+        var prefetchProcess = Process.Start(prefetchProcessStartInfo);
+
+        await prefetchProcess.WaitForExitAsync();
+
+        var prefetch = (await prefetchProcess.StandardOutput.ReadToEndAsync()).TrimEnd();
+
+        var convertProcessStartInfo = new ProcessStartInfo
+        {
+            FileName = "nix",
+            ArgumentList = { "hash", "to-sri", "--type", "sha256", prefetch },
+            RedirectStandardOutput = true,
+        };
+
+        var convertProcess = Process.Start(convertProcessStartInfo);
+
+        return await convertProcess.StandardOutput.ReadToEndAsync();
     }
 }
