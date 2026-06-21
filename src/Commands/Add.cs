@@ -10,7 +10,7 @@ internal static class Add
         Forge forge,
         string repository,
         string? branch,
-        ReferenceType? referenceType,
+        ReferenceType? type,
         bool? frozen
     )
     {
@@ -26,7 +26,7 @@ internal static class Add
                 Forge = forge,
                 Repository = repository,
                 Branch = branch,
-                ReferenceType = referenceType,
+                Type = type,
                 Frozen = frozen,
             }
         );

@@ -14,7 +14,7 @@ internal class PomniPin
     public required string Repository { get; init; }
 
     public string? Branch { get; init; }
-    public ReferenceType? ReferenceType { get; init; }
+    public ReferenceType? Type { get; init; }
     public bool? Frozen { get; init; }
 }
 

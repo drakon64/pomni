@@ -10,7 +10,7 @@ internal partial class Update
         var repo = pomniPin.Repository;
         string sha;
 
-        switch (pomniPin.ReferenceType)
+        switch (pomniPin.Type)
         {
             case ReferenceType.Branch or null:
             {
