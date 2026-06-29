@@ -11,7 +11,7 @@ internal static class Modify
         string? repository = null,
         string? branch = null,
         ReferenceType? type = null,
-        bool? frozen = null
+        bool frozen = false
     )
     {
         var pomniJson = JsonSerializer.Deserialize<PomniPins>(
@@ -29,8 +29,8 @@ internal static class Modify
             pin.Branch = branch;
         if (type is not null)
             pin.Type = type;
-        if (frozen is not null)
-            pin.Frozen = frozen;
+
+        pin.Frozen = frozen;
 
         using var pomniJsonFile = File.Open("pomni/pomni.json", FileMode.Create);
 

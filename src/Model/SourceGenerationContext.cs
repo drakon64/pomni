@@ -5,7 +5,7 @@ namespace Pomni.Model;
 [JsonSerializable(typeof(PomniPins))]
 [JsonSerializable(typeof(Dictionary<string, PomniLock>))]
 [JsonSourceGenerationOptions(
-    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
     PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
     UseStringEnumConverter = true,
     WriteIndented = true

@@ -11,7 +11,7 @@ internal static class Add
         string repository,
         string? branch,
         ReferenceType? type,
-        bool? frozen
+        bool frozen
     )
     {
         var pomniJson = JsonSerializer.Deserialize<PomniPins>(

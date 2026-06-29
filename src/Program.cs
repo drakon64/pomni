@@ -21,7 +21,7 @@ class Program
 
         var branchOption = new Option<string>("-b", "--branch");
         var referenceTypeOption = new Option<ReferenceType?>("-t", "--type");
-        var frozenOption = new Option<bool?>("-f", "--frozen");
+        var frozenOption = new Option<bool>("-f", "--frozen");
 
         var addCommand = new Command("add");
         addCommand.Arguments.Add(nameArgument);

@@ -27,7 +27,7 @@ internal static partial class Update
 
         foreach (var pin in pomniPins.Pins)
         {
-            if (pin.Value.Frozen is false or null)
+            if (!pin.Value.Frozen)
             {
                 var newLock = pomniLocks.GetValueOrDefault(pin.Key);
 
